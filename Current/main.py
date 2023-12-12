@@ -43,7 +43,7 @@ while True:
         threshold=cv2.threshold(difference,25,255,cv2.THRESH_BINARY)[1]
         start_frame=frame_bw
 
-        if threshold.sum()>100000:
+        if threshold.sum()>300:
             alarm_counter+=1
         else:
             if alarm_counter>0:
@@ -61,7 +61,7 @@ while True:
     key_pressed=cv2.waitKey(30)
     if key_pressed==ord("t"):
         if alarm_mode==False:
-            
+            print("Starting in 5 seconds")
             time.sleep(5)
         # print(alarm_mode)
         alarm_mode=not alarm_mode
@@ -72,8 +72,3 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
-
-
-
-
-    
