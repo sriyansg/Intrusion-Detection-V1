@@ -1,12 +1,12 @@
 import threading
 import winsound
-
+import time
 import cv2
 import imutils
 
 
 cap=cv2.VideoCapture(0,cv2.CAP_DSHOW)
-cap=cv2.VideoCapture(0)
+# cap=cv2.VideoCapture(0)
 
 cap.set(cv2.CAP_PROP_FRAME_WIDTH,640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
@@ -43,7 +43,7 @@ while True:
         threshold=cv2.threshold(difference,25,255,cv2.THRESH_BINARY)[1]
         start_frame=frame_bw
 
-        if threshold.sum()>300:
+        if threshold.sum()>100000:
             alarm_counter+=1
         else:
             if alarm_counter>0:
@@ -53,13 +53,17 @@ while True:
     else:
         cv2.imshow("Cam",frame)
 
-    if alarm_counter>20:
+    if alarm_counter>10:
         if not alarm:
             alarm=True
             threading.Thread(target=beep_alarm).start()
 
     key_pressed=cv2.waitKey(30)
     if key_pressed==ord("t"):
+        if alarm_mode==False:
+            
+            time.sleep(5)
+        # print(alarm_mode)
         alarm_mode=not alarm_mode
         alarm_counter=0
     if key_pressed==ord("q"):
