@@ -20,3 +20,17 @@ Python 3.x
 OpenCV
 imutils
 winsound (available on Windows)
+
+---
+
+## Version 2 (v2)
+
+The `v2` directory contains an updated version of the door intrusion detection system. This version connects to a remote IP camera (like an Android phone running an IP Webcam app) to stream video directly to your laptop over Wi-Fi.
+
+**V2 Features:**
+- **Remote IP Camera:** Uses IP cameras for placement flexibility (e.g., right by the door).
+- **Intrusion Alerts:** Triggers a popup alert window and an alarm beep immediately upon detecting movement.
+- **Snapshot Capture:** Automatically captures and saves a snapshot of the intrusion in the `Intrusions_Detected` folder.
+
+**Usage:**
+Navigate to the `v2` directory, install the required dependencies with `pip install -r requirements.txt`, and start the surveillance by running `run.bat` or `python intrusion_detector.py`.
